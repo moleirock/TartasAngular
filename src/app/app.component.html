@@ -1,58 +1,92 @@
-<h1>Las mejores tartas!</h1>
-<fieldset class="form">
-  <legend>Dar de alta una tarta</legend>
-  <div class="field">
-    <label for="nombre">Nombre:</label>
-    <input type="text" name="nombre" [(ngModel)]="nombre">
-  </div>
-  <div class="field">
-    <label for="sabor">Sabor:</label>
-    <input type="text" name="sabor" [(ngModel)]="sabor">
-  </div>
-  <div class="field">
-    <label for="intolerancia">Intolerancias:</label>
-    <select name="intolerancia" [(ngModel)]="intolerancia">
-      <option value="Gluten">Gluten</option>
-      <option value="Vegano">Vegano</option>
-      <option value="Huevo">Huevo</option>
-      <option value="Lactosa">Lactosa</option>
-      <option value="Dieta">Dieta</option>
-    </select>
-  </div>
-  <div class="field">
-    <label for="caloriasRacion">Calorias por racion:</label>
-    <input type="number" name="caloriasRacion" [(ngModel)]="caloriasRacion">
-  </div>
-  <div class="field">
-    <label for="precio">Precio:</label>
-    <input type="number" name="precio" [(ngModel)]="precio">
-  </div>
-  <div class="field">
-    <label for="numPorciones">Numero de porciones:</label>
-    <input type="number" name="numPorciones" [(ngModel)]="numPorciones">
-  </div>
-  <input type="button" value="Agregar Tarta" (click)="addTarta()">
+<h1 class="title">Las mejores <span class="text-purple">tartas</span>!</h1>
+<fieldset class="form" class="form">
+    <legend>Dar de alta una tarta</legend>
+    <div class="field">
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" [(ngModel)]="nombre">
+    </div>
+    <div class="field">
+        <label for="sabor">Sabor:</label>
+        <input type="text" name="sabor" [(ngModel)]="sabor">
+    </div>
+    <div class="field">
+        <label for="intolerancia">Intolerancias:</label>
+        <select name="intolerancia" [(ngModel)]="intolerancia">
+            <option value="Gluten">Gluten</option>
+            <option value="Vegano">Vegano</option>
+            <option value="Huevo">Huevo</option>
+            <option value="Lactosa">Lactosa</option>
+            <option value="Dieta">Dieta</option>
+        </select>
+    </div>
+    <div class="field">
+        <label for="caloriasRacion">Calorias por racion:</label>
+        <input type="number" name="caloriasRacion" [(ngModel)]="caloriasRacion">
+    </div>
+    <div class="field">
+        <label for="precio">Precio:</label>
+        <input type="number" name="precio" [(ngModel)]="precio">
+    </div>
+    <div class="field">
+        <label for="numPorciones">Numero de porciones:</label>
+        <input type="number" name="numPorciones" [(ngModel)]="numPorciones">
+    </div>
+    <input type="button" value="Agregar Tarta" (click)="addTarta()" class="btn"
+        *ngIf="nombre && sabor && intolerancia && numPorciones && caloriasRacion && precio else btnDisabled">
+    <ng-template #btnDisabled>
+        <input type="button" value="Rellena los campos" class="btn" (click)="addTarta()">
+    </ng-template>
 </fieldset>
 
+<div class="search">
+    <div class="showData">
+        <div class="field" *ngIf="tartas.length>0">
+            <label for="filtter">Filtrar intolerancias:</label>
+            <select name="filtter" [(ngModel)]="filtro">
+                <option value="all">Todas</option>
+                <option value="Gluten">Gluten</option>
+                <option value="Vegano">Vegano</option>
+                <option value="Huevo">Huevo</option>
+                <option value="Lactosa">Lactosa</option>
+                <option value="Dieta">Dieta</option>
+            </select>
+        </div>
+        <div class="field" *ngIf="filtro=='Dieta'">
+            <label for="dieta">Calorías máximas</label>
+            <input type="number" name="dieta" [(ngModel)]="caloriasDieta" min="0">
+        </div>
+    </div>
+</div>
 
-<div class="showData">
-  <div class="field" *ngIf="tartas.length>0">
-    <label for="filtter">Filtrar intolerancias:</label>
-    <select name="filtter" [(ngModel)]="filtro">
-      <option value="Gluten">Gluten</option>
-      <option value="Vegano">Vegano</option>
-      <option value="Huevo">Huevo</option>
-      <option value="Lactosa">Lactosa</option>
-      <option value="Dieta">Dieta</option>
-    </select>
-  </div>
-  <input type="text" name="dieta" *ngIf="filtro=='Dieta'" [(ngModel)]="caloriasDieta">
-  <div class="cakeList" *ngFor="let tarta of tartas">
+<div class="cakeList" *ngFor="let tarta of tartas">
     <div *ngIf="filtro=='Dieta'else itemSinDieta">
-      <p class="cakeItem" *ngIf="tarta.caloriasRacion<=caloriasDieta">{{tarta.nombre}} {{tarta.sabor}} {{tarta.intolerancia}} {{tarta.caloriasRacion}} </p>
+        <div class="cakeItem" *ngIf="tarta.caloriasRacion<=caloriasDieta" class="cakeItem">
+            <div class="cakeItem__contenido">
+                <h3 class="cakeItem__title">{{tarta.nombre}}</h3>
+                <p>Sabor: <span class="text-purple">{{tarta.sabor}}</span></p>
+                <p>Alérgenos: <span class="text-purple">{{tarta.intolerancia}}</span></p>
+                <p>Porciones: <span class="text-purple">{{tarta.numPorciones}} u.</span></p>
+                <p>Precio: <span class="text-purple">{{tarta.precio}}</span></p>
+                <p>Calorias: <span class="text-purple">{{tarta.caloriasRacion}} kc/100g</span></p>
+            </div>
+            <div class="cakeItem__img">
+                <img [src]="getImage()" alt="tarta">
+            </div>
+        </div>
     </div>
     <ng-template #itemSinDieta>
-      <p class="cakeItem" *ngIf="tarta.intolerancia!=filtro">{{tarta.intolerancia}}</p>
+        <div class="cakeItem" *ngIf="tarta.intolerancia!=filtro || filtro=='all'">
+            <div class="cakeItem__contenido">
+                <h3 class="cakeItem__title">{{tarta.nombre}}</h3>
+                <p>Sabor: <span class="text-purple">{{tarta.sabor}}</span></p>
+                <p>Alérgenos: <span class="text-purple">{{tarta.intolerancia}}</span></p>
+                <p>Porciones: <span class="text-purple">{{tarta.numPorciones}} u.</span></p>
+                <p>Precio: <span class="text-purple">{{tarta.precio}}</span></p>
+                <p>Calorias: <span class="text-purple">{{tarta.caloriasRacion}} kc/100g</span></p>
+            </div>
+            <div class="cakeItem__img">
+                <img [src]="getImage()" alt="tarta">
+            </div>
+        </div>
     </ng-template>
-  </div>
 </div>

@@ -1,0 +1,125 @@
+.title{
+    text-align: center;
+    margin: 2rem 0;
+}
+.form{
+    max-width: 95%;
+    margin: 2rem auto;
+    padding: 3rem 2rem 2rem 2rem;
+    border-radius: 2rem;
+    border:unset;
+    box-shadow: 0 0 2rem var(--grey);
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 1.5rem;
+}
+@media (max-width: 500px){
+    .form{
+        display: block;
+    }
+}
+legend{
+    padding: 0rem .5rem;
+    font-weight: bold;
+    font-size: 1.6rem;
+    color: var(--black);
+    transform: translateY(1.4rem);
+    text-align: center;
+}
+.field{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+label{
+    font-weight: bold;
+    color: var(--purple);
+}
+input,select{
+    padding: 0.5rem;
+    border-radius: .5rem;
+    border: solid 1px;
+}
+.btn{
+    color: white;
+    grid-column: 1/3;
+    margin: 1rem auto;
+    font-weight: bold; 
+    text-transform: uppercase;
+    padding: 1rem;
+    background-color: var(--purple);
+    border-radius: 2rem;
+    border: unset;
+    cursor: pointer;
+    box-shadow: 0 0 1rem var(--grey);
+
+}
+.btn:hover{
+    transform: scale(1.05);
+}
+.btn:disabled{
+    background-color: grey;
+    cursor: not-allowed;
+    transform: unset;
+}
+@media (max-width: 500px){
+    .btn{
+        width: 95%;
+        margin: 2rem auto;
+    }
+}
+
+.cakeItem{
+    max-width: 95%;
+    margin: 0 auto;
+    margin-top: 3rem;
+    border-radius: 2rem;
+    background-color: var(--white);
+    box-shadow: 0 0 1rem var(--grey);
+    padding: 3rem;
+    display: flex;
+    justify-content:space-between;
+    gap: 2rem;
+}
+@media (max-width: 768px){
+    .cakeItem{
+        flex-direction: column;
+    }
+    
+}
+.cakeItem__contenido{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    
+}
+.cakeItem__title{
+    font-size: 3.2rem;
+    margin-bottom: 1rem;
+}
+.cakeItem p{
+    font-weight: bold;
+    font-size: 2.4rem;
+}
+.cakeItem__img{
+    max-width: 40rem ;
+    border-radius: 2rem;
+}
+.cakeItem__img img{
+    border-radius: 2rem;
+}
+
+.search{
+    width: 90%;
+    margin: 0 auto;   
+    
+}
+.showData{
+    display: flex;
+    gap: 2rem;
+}
+.search .field{
+    width: max(50%,30rem);
+    
+}
+

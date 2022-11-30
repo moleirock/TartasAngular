@@ -1,1 +1,40 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --font-primary: "Roboto", sans-serif;
+
+    --black: #232024;
+    --purple: #C62368;
+    --pink: #FA7268;
+    --white:white;
+    --grey:grey;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-image: url(./assets/img/background.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    font-size: 1.8rem;
+    font-family: var(--font-primary);
+    color: var(--black);
+}
+img{
+    max-width: 100%;
+}
+.container {
+    max-width: 140rem;
+    margin: 0 auto;
+}
+.text-purple {
+    color: var(--purple);
+}
