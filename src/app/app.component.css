@@ -123,3 +123,15 @@ input,select{
     
 }
 
+.gluten{
+    background-color: var(--beige);
+}
+.vegano{
+    background-color: var(--softGreen);
+}
+.huevo{
+    background-color: var(--softYellow);
+}
+.lactosa{
+    background-color: var(--softBlue);
+}

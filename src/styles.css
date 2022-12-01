@@ -6,6 +6,10 @@
     --pink: #FA7268;
     --white:white;
     --grey:grey;
+    --beige:rgb(255, 201, 139);
+    --softBlue:rgb(139, 185, 255);
+    --softYellow:rgb(255, 238, 89);
+    --softGreen:rgb(153, 255, 128);
 }
 
 html {
@@ -38,3 +42,4 @@ img{
 .text-purple {
     color: var(--purple);
 }
+

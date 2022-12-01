@@ -60,7 +60,8 @@
 
 <div class="cakeList" *ngFor="let tarta of tartas">
     <div *ngIf="filtro=='Dieta'else itemSinDieta">
-        <div class="cakeItem" *ngIf="tarta.caloriasRacion<=caloriasDieta" class="cakeItem">
+        <div class="cakeItem" *ngIf="tarta.caloriasRacion<=caloriasDieta" class="cakeItem"
+            [ngClass]="{gluten:tarta.intolerancia=='Gluten',lactosa:tarta.intolerancia=='Lactosa',huevo:tarta.intolerancia=='Huevo',vegano:tarta.intolerancia=='Vegano'}">
             <div class="cakeItem__contenido">
                 <h3 class="cakeItem__title">{{tarta.nombre}}</h3>
                 <p>Sabor: <span class="text-purple">{{tarta.sabor}}</span></p>
@@ -75,7 +76,8 @@
         </div>
     </div>
     <ng-template #itemSinDieta>
-        <div class="cakeItem" *ngIf="tarta.intolerancia!=filtro || filtro=='all'">
+        <div class="cakeItem" *ngIf="tarta.intolerancia!=filtro || filtro=='all'"
+            [ngClass]="{gluten:tarta.intolerancia=='Gluten',lactosa:tarta.intolerancia=='Lactosa',huevo:tarta.intolerancia=='Huevo',vegano:tarta.intolerancia=='Vegano'}">
             <div class="cakeItem__contenido">
                 <h3 class="cakeItem__title">{{tarta.nombre}}</h3>
                 <p>Sabor: <span class="text-purple">{{tarta.sabor}}</span></p>
