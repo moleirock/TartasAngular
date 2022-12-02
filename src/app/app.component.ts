@@ -8,13 +8,16 @@ import { Tarta } from '../models/Tarta';
 })
 export class AppComponent {
     title = 'TartasProject';
+    
     tartas: Tarta[] = [];
     nombre: string = '';
     sabor: string = '';
-    intolerancia: string = '';
+    intolerancia: string = 'Sin alérgenos';
     caloriasRacion: number = 0;
     precio: number = 0;
     numPorciones: number = 0;
+
+    intolerancias:string[]=["Gluten","Vegano","Huevo","Lactosa"];
 
     filtro: string = 'all';
     caloriasDieta: number = 0;
@@ -35,4 +38,8 @@ export class AppComponent {
     getImage(): string {
         return './assets/img/' + (Math.floor(Math.random() * 8) + 1) + '.jpg';
     }
+
+    /* filtrar(filtro:string){
+        this.filtro=filtro;
+    } */
 }

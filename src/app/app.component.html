@@ -12,11 +12,8 @@
     <div class="field">
         <label for="intolerancia">Intolerancias:</label>
         <select name="intolerancia" [(ngModel)]="intolerancia">
-            <option value="Gluten">Gluten</option>
-            <option value="Vegano">Vegano</option>
-            <option value="Huevo">Huevo</option>
-            <option value="Lactosa">Lactosa</option>
-            <option value="Dieta">Dieta</option>
+            <option *ngFor="let element of intolerancias" [value]="element">{{element}}</option>
+            <option value="Sin alérgenos">Sin alérgenos</option>
         </select>
     </div>
     <div class="field">
@@ -34,7 +31,7 @@
     <input type="button" value="Agregar Tarta" (click)="addTarta()" class="btn"
         *ngIf="nombre && sabor && intolerancia && numPorciones && caloriasRacion && precio else btnDisabled">
     <ng-template #btnDisabled>
-        <input type="button" value="Rellena los campos" class="btn" (click)="addTarta()">
+        <input type="button" value="Rellena los campos" class="btn" disabled>
     </ng-template>
 </fieldset>
 
@@ -42,14 +39,12 @@
     <div class="showData">
         <div class="field" *ngIf="tartas.length>0">
             <label for="filtter">Filtrar intolerancias:</label>
-            <select name="filtter" [(ngModel)]="filtro">
+            <select name="filtter" [(ngModel)]="filtro" >
                 <option value="all">Todas</option>
-                <option value="Gluten">Gluten</option>
-                <option value="Vegano">Vegano</option>
-                <option value="Huevo">Huevo</option>
-                <option value="Lactosa">Lactosa</option>
                 <option value="Dieta">Dieta</option>
+                <option *ngFor="let element of intolerancias" [value]="element">{{element}}</option>
             </select>
+            <!-- <input type="button" value="Filtrar" class="btn btn--filtro" (click)="filtrar(filtro.value)"> anhadir a select #filtro y quitar model   -->
         </div>
         <div class="field" *ngIf="filtro=='Dieta'">
             <label for="dieta">Calorías máximas</label>

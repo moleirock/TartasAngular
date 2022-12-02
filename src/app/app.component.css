@@ -8,7 +8,7 @@
     padding: 3rem 2rem 2rem 2rem;
     border-radius: 2rem;
     border:unset;
-    box-shadow: 0 0 2rem var(--grey);
+    box-shadow: 0 0 1rem var(--grey);
     display: grid;
     grid-template-columns: repeat(2,1fr);
     gap: 1.5rem;
@@ -54,6 +54,10 @@ input,select{
     box-shadow: 0 0 1rem var(--grey);
 
 }
+.btn--filtro{
+    margin: 1rem 0;
+    width: 15rem;
+}
 .btn:hover{
     transform: scale(1.05);
 }
@@ -74,7 +78,7 @@ input,select{
     margin: 0 auto;
     margin-top: 3rem;
     border-radius: 2rem;
-    background-color: var(--white);
+    background-color: var(--white-70);
     box-shadow: 0 0 1rem var(--grey);
     padding: 3rem;
     display: flex;
@@ -83,7 +87,9 @@ input,select{
 }
 @media (max-width: 768px){
     .cakeItem{
+        max-width: min(50rem,95%);
         flex-direction: column;
+        
     }
     
 }
@@ -104,9 +110,11 @@ input,select{
 .cakeItem__img{
     max-width: 40rem ;
     border-radius: 2rem;
+    align-self: center;
 }
 .cakeItem__img img{
     border-radius: 2rem;
+    box-shadow: 0 0 1rem var(--grey);
 }
 
 .search{
@@ -124,14 +132,19 @@ input,select{
 }
 
 .gluten{
-    background-color: var(--beige);
+    /* background-color: var(--beige); */
+    border: 1rem solid var(--beige);
 }
 .vegano{
-    background-color: var(--softGreen);
+    /* background-color: var(--softGreen); */
+    border: 1rem solid var(--softGreen);
 }
 .huevo{
-    background-color: var(--softYellow);
+    /* background-color: var(--softYellow); */
+    border: 1rem solid var(--softYellow);
 }
 .lactosa{
-    background-color: var(--softBlue);
+    /* background-color: var(--softBlue); */
+    border: 1rem solid var(--softBlue);
 }
+

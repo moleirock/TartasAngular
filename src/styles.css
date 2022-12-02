@@ -5,6 +5,7 @@
     --purple: #C62368;
     --pink: #FA7268;
     --white:white;
+    --white-70:rgba(255, 255, 255, 0.90);
     --grey:grey;
     --beige:rgb(255, 201, 139);
     --softBlue:rgb(139, 185, 255);
@@ -27,6 +28,7 @@ body {
     background-image: url(./assets/img/background.svg);
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     min-height: 100vh;
     font-size: 1.8rem;
     font-family: var(--font-primary);
@@ -36,7 +38,7 @@ img{
     max-width: 100%;
 }
 .container {
-    max-width: 140rem;
+    max-width: 120rem;
     margin: 0 auto;
 }
 .text-purple {
